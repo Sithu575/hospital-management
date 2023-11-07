@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Management</title>
+    <style>
+        /* Add your CSS styles here */
+        body
+          {background-color:#71bcc9 ;}
+        
+        .hidden {
+            display: none;
+        }
+        th, td {
+            padding: 15px;
+           
+
+        }
+    </style>
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center;">User Management System</h1>
+        <a href="{{ url_for('main.login')}}">Home</a>
+        <!--<a href="logout.html" style="float: right;">Logout</a> -->
+        <h2 style="text-align: center;">User List</h2>
+        <a href="{{ url_for('register.register')}}" style="float: right; margin-right: 20px;">
+        <i class="fas fa-plus" id="add-user-icon"></i> New 
+      </a>
+      
+    </header>
+    <main>
+        <div id="user-list">
+            <table style="width: 100%" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  <th>Address</th>
+                  <th>Phone Number</th>
+                  <th>Additional Phone Number</th>
+                  <th>Email</th>
+                  <th>Aadhaar</th>
+                  <th>Created Date</th>
+                  <th>Created By</th>
+                  <th>Action</th> 
+                </tr>
+              </thead>
+              <tbody>
+                {% for user in users %}
+                  <tr>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.age }}</td>
+                    <td>{{ user.gender }}</td>
+                    <td>{{ user.address }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.add_phone }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.adhaar }}</td>
+                    <td>{{ user.created_date }}</td>
+                    <td>{{ user.created_by }}</td>
+                    <td> <a href="#">Edit</a>
+                <br>
+                          <a href="#">Delete</a>
+                      
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
